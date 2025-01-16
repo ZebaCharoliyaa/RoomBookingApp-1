@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:roombooking/home.dart';
 
 class Favorite extends StatefulWidget {
   Favorite({super.key});
-  
-
   @override
   State<Favorite> createState() => _FavoriteState();
 }
@@ -43,7 +40,6 @@ final List<Map<String, String>> favoritePlaces = [
 ];
 
 class _FavoriteState extends State<Favorite> {
-
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
@@ -115,7 +111,6 @@ class FavoritePlaceCard extends StatelessWidget {
     Key? key,
     required this.name,
     required this.location,
-    // required String image,
     required this.image,
   }) : super(key: key);
 
