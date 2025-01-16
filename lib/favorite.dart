@@ -10,94 +10,86 @@ final List<Map<String, String>> favoritePlaces = [
   {
     'name': 'Niladri Reservoir',
     'location': 'Tekergat, Sunamgonj',
-    'imageUrl': 'https://t4.ftcdn.net/jpg/01/04/13/57/240_F_104135791_1cLZHNM7Y74TFsLKtG08JcfbIe3SiRma.jpg',
+    'image':
+        'https://as1.ftcdn.net/jpg/06/19/00/08/1000_F_619000872_AxiwLsfQqRHMkNxAbN4l5wg1MsPgBsmo.jpg'
   },
   {
     'name': 'Casa Las Trutugas',
     'location': 'Av Damero, Mexico',
-    'image': 'assets/images/room3.jpeg',
+    'image':
+        'https://t3.ftcdn.net/jpg/09/79/53/60/240_F_979536087_YmIDF56Qtz7i1JiEXv3eXzI5gitM8BvS.jpg'
   },
   {
     'name': 'Ao Nang Villa Resort',
     'location': 'Bastola, Islampur',
-    'image': 'assets/images/room5.jpeg',
+    'image':
+        'https://as2.ftcdn.net/v2/jpg/09/64/96/87/1000_F_964968792_O79xKuKm2BYv0dFoQ4b1ryvzd4RgNeRD.jpg'
   },
   {
     'name': 'Rangauti Resort',
     'location': 'Sylhet, Airport Road',
-    'image': 'assets/images/room8.jpeg',
+    'image':
+        'https://t4.ftcdn.net/jpg/06/32/20/07/240_F_632200724_WuOGPlu1XfDjqUinsBGzHXaa8TVtdqD9.jpg',
   },
   {
     'name': 'Kachura Resort',
     'location': 'Vellina, Island',
-    'image': 'assets/images/room1.jpeg',
+    'image':
+        'https://t3.ftcdn.net/jpg/03/21/78/98/240_F_321789819_Jyv66AM5PoY0j9tZzjkB1c807zQQXtZh.jpg'
   },
   {
     'name': 'Shakardu Resort',
     'location': 'Shakardu, Pakistan',
-    'image': 'assets/images/room2.jpeg',
+    'image':
+        'https://t3.ftcdn.net/jpg/04/16/48/08/240_F_416480811_HmtgLEq1GLmqy0WpKuAfuaYFn7u08IyF.jpg'
   },
 ];
 
 class _FavoriteState extends State<Favorite> {
   @override
   Widget build(BuildContext context) {
-    double screenWidth = MediaQuery.of(context).size.width;
-    double screenHeight = MediaQuery.of(context).size.height;
-    
-    // Get device pixel ratio (useful for retina displays)
-    double pixelRatio = MediaQuery.of(context).devicePixelRatio;
-
-    // Check if the device is in portrait or landscape mode
-    bool isPortrait = MediaQuery.of(context).orientation == Orientation.portrait;
-
-    // You can also use the padding value to calculate for the safe area.
-    EdgeInsets padding = MediaQuery.of(context).padding;
-  // final screenWidth = MediaQuery.of(context).size.width;
-
     return Scaffold(
-      // appBar: AppBar(
-
-      //   centerTitle: true,
-      // ),
-      body: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-        // Text on top of GridView
-        Align(
-          alignment: Alignment.topLeft,
-          child: Padding(
-            padding:  EdgeInsets.only(top: 30,left: 20),
-            child: Text(
-              'Explore Favorite Places',
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-                color: Colors.black,
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          // Text on top of GridView
+          Align(
+            alignment: Alignment.topLeft,
+            child: Padding(
+              padding: EdgeInsets.only(top: 30, left: 20),
+              child: Text(
+                'Explore Favorite Places',
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black,
+                ),
               ),
             ),
           ),
-        ),
-        // SizedBox(height: 8),
-        Expanded(
-          child: GridView.builder(
-            padding: EdgeInsets.all(16),
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2, // 2 cards per row
-              mainAxisSpacing: 16,
-                crossAxisSpacing:16,
-                childAspectRatio: 0.85,
+          // GridView to display the favorite places
+          Expanded(
+            child: GridView.builder(
+              padding: EdgeInsets.all(16),
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2, // 2 cards per row
+                mainAxisSpacing: 16,
+                crossAxisSpacing: 16,
+                childAspectRatio: 0.75,
+              ),
+              itemCount: favoritePlaces.length,
+              itemBuilder: (context, index) {
+                final place = favoritePlaces[index];
+                return FavoritePlaceCard(
+                  name: place['name']!,
+                  location: place['location']!,
+                  image: place['image']!,
+                );
+              },
             ),
-            itemCount: favoritePlaces.length,
-            itemBuilder: (context, index) {
-              final place = favoritePlaces[index];
-              return FavoritePlaceCard(
-                name: place['name']!,
-                location: place['location']!,
-                image: place['imageUrl']!,
-              );
-            },
           ),
-        ),
-      ]),
+        ],
+      ),
     );
   }
 }
@@ -118,10 +110,9 @@ class FavoritePlaceCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       color: Colors.transparent,
-      elevation: 0, // Adds shadow
+      elevation: 0,
       shape: RoundedRectangleBorder(
-        borderRadius:
-            BorderRadius.circular(12.0), // Rounded corners for the Card
+        borderRadius: BorderRadius.circular(12.0),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -129,21 +120,33 @@ class FavoritePlaceCard extends StatelessWidget {
           // Stack to display the image and favorite icon
           Stack(
             children: [
-              // Image with rounded corners
-              Expanded(
-                child: ClipRRect(
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(12.0),
-                    topRight: Radius.circular(12.0),
-                    bottomLeft: Radius.circular(12.0),
-                    bottomRight: Radius.circular(12.0),
-                  ),
-                  child: Image.asset(
-                    image,
-                    height: 140,
-                    //width: double.infinity,
-                    fit: BoxFit.cover,
-                  ),
+              // Image from network with rounded corners
+              ClipRRect(
+                borderRadius: BorderRadius.circular(12.0),
+                child: Image.network(
+                  image,
+                  height: 140,
+                  width: double.infinity,
+                  fit: BoxFit.cover,
+                  loadingBuilder: (context, child, loadingProgress) {
+                    if (loadingProgress == null) return child;
+                    return Center(
+                      child: CircularProgressIndicator(
+                        value: loadingProgress.expectedTotalBytes != null
+                            ? loadingProgress.cumulativeBytesLoaded /
+                                (loadingProgress.expectedTotalBytes ?? 1)
+                            : null,
+                      ),
+                    );
+                  },
+                  errorBuilder: (context, error, stackTrace) {
+                    return Center(
+                      child: Text(
+                        'Image not available',
+                        style: TextStyle(color: Colors.red),
+                      ),
+                    );
+                  },
                 ),
               ),
               // Favorite Icon Button at the top-right corner
@@ -151,7 +154,7 @@ class FavoritePlaceCard extends StatelessWidget {
                 top: 8.0,
                 right: 8.0,
                 child: CircleAvatar(
-                  backgroundColor: Colors.transparent.withOpacity(0.5),
+                  backgroundColor: Colors.black.withOpacity(0.5),
                   child: IconButton(
                     icon: Icon(
                       Icons.favorite,
@@ -171,40 +174,20 @@ class FavoritePlaceCard extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                // Text(
-                  // name,
-                  // style: TextStyle(
-                  //   fontSize: 14,
-                  //   fontWeight: FontWeight.bold,
-                  // ),
-                // ),
-                // SizedBox(height: 4),
-                // Text(
-                //   location,
-                //   style: TextStyle(
-                //     fontSize: 12,
-                //     color: Colors.grey,
-                //   ),
-                // ),
+                Padding(
+                  padding: EdgeInsets.only(bottom: 4.0),
+                  child: Text(
+                    name,
+                    style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+                  ),
+                ),
+                Text(
+                  location,
+                  style: TextStyle(fontSize: 12, color: Colors.grey),
+                ),
               ],
             ),
           ),
-          Padding(padding: 
-          EdgeInsets.all(8.0),
-          child: Text(
-            name,
-            style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
-          ),
-          ),
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 8.0),
-            child: Text(
-              location,
-              style: TextStyle(fontSize: 12, color: Colors.grey),
-
-            ),
-
-          )
         ],
       ),
     );

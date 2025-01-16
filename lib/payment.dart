@@ -80,23 +80,42 @@ class _PaymentState extends State<Payment> {
                 width: double.infinity,
                 height: 50,
                 child: Center(
-                  child: PrettySlideIconButton(
-                    foregroundColor: Colors.orange,
-                    icon: Icons.arrow_forward,
-
-                    label: "Go to Payment",
-                    labelStyle: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.w100,
-                        color: Colors.black),
+                  child: ElevatedButton(
                     onPressed: () {
+                      // Handle login action
                       Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => Confirmpayment()),
-                      );
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => Confirmpayment()));
                     },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.orange,
+                      minimumSize: Size(double.infinity, 50),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                    ),
+                    child: Text(
+                      'Go to Payment ->',
+                      style: TextStyle(color: Colors.white, fontSize: 20),
+                    ),
                   ),
+                  // child: IconButton(
+                  //   foregroundColor: Colors.orange,
+                  //   icon: Icons.arrow_forward,
+                  //   label: "Go to Payment",
+                  //   labelStyle: TextStyle(
+                  //       fontSize: 18,
+                  //       fontWeight: FontWeight.bold,
+                  //       color: Colors.black),
+                  //   onPressed: () {
+                  //     Navigator.push(
+                  //       context,
+                  //       MaterialPageRoute(
+                  //           builder: (context) => Confirmpayment()),
+                  //     );
+                  //   },
+                  // ),
                 )
 
                 // ElevatedButton(

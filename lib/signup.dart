@@ -11,24 +11,23 @@ class Signup extends StatefulWidget {
 class _SignupState extends State<Signup> {
   @override
   Widget build(BuildContext context) {
-     return Scaffold(
+    return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.white,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.black),
-          onPressed: () {
-            // Handle back navigation
-          },
-        ),
+        // leading: IconButton(
+        //   icon: const Icon(Icons.arrow_back, color: Colors.black),
+        //   onPressed: () {
+        //     // Handle back navigation
+        //   },
+        // ),
       ),
       body: Center(
         child: SafeArea(
           child: SingleChildScrollView(
             padding: const EdgeInsets.symmetric(horizontal: 24.0),
             child: Container(
-              
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -51,9 +50,12 @@ class _SignupState extends State<Signup> {
                       ],
                     ),
                   ),
-                  Text("Fill your information below or register with\n your social account. ",textAlign: TextAlign.center,),
-                   SizedBox(height: 30),
-              
+                  Text(
+                    "Fill your information below or register with\n your social account. ",
+                    textAlign: TextAlign.center,
+                  ),
+                  SizedBox(height: 30),
+
                   // Email TextField
                   TextField(
                     decoration: InputDecoration(
@@ -68,7 +70,7 @@ class _SignupState extends State<Signup> {
                     ),
                   ),
                   SizedBox(height: 20),
-                   TextField(
+                  TextField(
                     decoration: InputDecoration(
                       hintText: 'Email',
                       prefixIcon: const Icon(Icons.email_outlined),
@@ -81,7 +83,7 @@ class _SignupState extends State<Signup> {
                     ),
                   ),
                   const SizedBox(height: 20),
-              
+
                   // Password TextField
                   TextField(
                     obscureText: true,
@@ -98,16 +100,20 @@ class _SignupState extends State<Signup> {
                     ),
                   ),
                   const SizedBox(height: 10),
-              
+
                   // // Forgot Password Button
-                
+
                   const SizedBox(height: 20),
-              
+
                   // Login Button
                   ElevatedButton(
                     onPressed: () {
                       // Handle login action
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => Login(),));
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => Login(),
+                          ));
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.orange,
@@ -122,7 +128,7 @@ class _SignupState extends State<Signup> {
                     ),
                   ),
                   const SizedBox(height: 30),
-              
+
                   // Or Login with
                   Row(
                     children: const [
@@ -135,7 +141,7 @@ class _SignupState extends State<Signup> {
                     ],
                   ),
                   const SizedBox(height: 10),
-              
+
                   // Social Media Buttons
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -166,14 +172,12 @@ class _SignupState extends State<Signup> {
                           height: 25,
                           child: Image.asset('assets/images/instagram.jpeg'),
                         ),
-                        onPressed: () {
-                         
-                        },
+                        onPressed: () {},
                       ),
                     ],
                   ),
                   const SizedBox(height: 10),
-              
+
                   // Register Now
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -181,13 +185,17 @@ class _SignupState extends State<Signup> {
                       const Text("Already have an account?"),
                       TextButton(
                         onPressed: () {
-                            Navigator.push(
-                            context,
-                                      MaterialPageRoute(builder:( context)=> Login(),));
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => Login(),
+                              ));
                         },
                         child: Text(
                           'Login',
-                          style: TextStyle(color: Colors.orange,fontWeight: FontWeight.bold),
+                          style: TextStyle(
+                              color: Colors.orange,
+                              fontWeight: FontWeight.bold),
                         ),
                       ),
                     ],

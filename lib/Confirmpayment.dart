@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:roombooking/home.dart';
 
 class Confirmpayment extends StatefulWidget {
   const Confirmpayment({super.key});
@@ -34,7 +35,7 @@ class _ConfirmpaymentState extends State<Confirmpayment> {
             _paymentOption('Bank Negara Indonesia'),
             _paymentOption('Bank Mandiri'),
             _paymentOption('Bank Rakyat Indonesia'),
-           
+
             SizedBox(height: 10),
             // Other Payment Methods
             Text(
@@ -105,7 +106,8 @@ class PaymentSuccessPage extends StatefulWidget {
   _PaymentSuccessPageState createState() => _PaymentSuccessPageState();
 }
 
-class _PaymentSuccessPageState extends State<PaymentSuccessPage> with SingleTickerProviderStateMixin {
+class _PaymentSuccessPageState extends State<PaymentSuccessPage>
+    with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<double> _scaleAnimation;
   late Animation<Color?> _colorAnimation;
@@ -117,11 +119,15 @@ class _PaymentSuccessPageState extends State<PaymentSuccessPage> with SingleTick
     _controller = AnimationController(
       duration: Duration(seconds: 2),
       vsync: this,
-    )..forward();  // Start the animation immediately
+    )..forward(); // Start the animation immediately
 
-    _scaleAnimation = Tween<double>(begin: 0.8, end: 1.0).animate(CurvedAnimation(parent: _controller, curve: Curves.easeOut));
-    _colorAnimation = ColorTween(begin: Colors.orange.shade100, end: Colors.orange).animate(CurvedAnimation(parent: _controller, curve: Curves.easeOut));
-    _iconAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(parent: _controller, curve: Curves.elasticOut));
+    _scaleAnimation = Tween<double>(begin: 0.8, end: 1.0)
+        .animate(CurvedAnimation(parent: _controller, curve: Curves.easeOut));
+    _colorAnimation = ColorTween(
+            begin: Colors.orange.shade100, end: Colors.orange)
+        .animate(CurvedAnimation(parent: _controller, curve: Curves.easeOut));
+    _iconAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(
+        CurvedAnimation(parent: _controller, curve: Curves.elasticOut));
   }
 
   @override
@@ -164,7 +170,10 @@ class _PaymentSuccessPageState extends State<PaymentSuccessPage> with SingleTick
             SizedBox(height: 20),
             Text(
               'Payment Success!',
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.orange),
+              style: TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.orange),
             ),
             SizedBox(height: 10),
             Text(
@@ -178,7 +187,11 @@ class _PaymentSuccessPageState extends State<PaymentSuccessPage> with SingleTick
                 backgroundColor: Colors.orange,
               ),
               onPressed: () {
-                Navigator.popUntil(context, (route) => route.isFirst);
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => Home(),
+                    ));
               },
               child: Text(
                 'Back to Home',
