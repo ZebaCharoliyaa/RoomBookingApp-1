@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "370287773245",
+    "project_id": "roombooking-5c11f",
+    "storage_bucket": "roombooking-5c11f.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:370287773245:android:17248c39eae8efe6a6cc54",
+        "android_client_info": {
+          "package_name": "com.example.roombooking"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCWXeKz3Zd84ckoTnfnSsiGq9aobminySY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
