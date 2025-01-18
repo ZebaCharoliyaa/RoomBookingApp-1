@@ -45,7 +45,7 @@ class _LoginState extends State<Login> {
       builder: (context) {
         return AlertDialog(
           title: Text('Error'),
-          content: Text('please enter correct email and password.'),
+          content: Text('please enter valid email or password.'),
           actions: [
             TextButton(
               onPressed: () => Navigator.pop(context),
@@ -67,7 +67,7 @@ class _LoginState extends State<Login> {
         leading: IconButton(
           icon: Icon(Icons.arrow_back, color: Colors.black),
           onPressed: () {
-            // Handle back navigation
+            Navigator.pop(context);
           },
         ),
       ),

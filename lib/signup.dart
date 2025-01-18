@@ -18,7 +18,7 @@ class _SignupState extends State<Signup> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
-  bool _isLoading = false;
+  // bool _isLoading = false;
 
   void _signupUser() async {
     String fullName = _fullNameController.text.trim();
@@ -32,9 +32,9 @@ class _SignupState extends State<Signup> {
       return;
     }
 
-    setState(() {
-      _isLoading = true;
-    });
+    // setState(() {
+    //   _isLoading = true;
+    // });
 
     try {
       // Create user in Firebase Authentication
@@ -70,9 +70,9 @@ class _SignupState extends State<Signup> {
         SnackBar(content: Text("Error: ${e.toString()}")),
       );
     } finally {
-      setState(() {
-        _isLoading = false;
-      });
+      // setState(() {
+      //   _isLoading = false;
+      // });
     }
   }
 
