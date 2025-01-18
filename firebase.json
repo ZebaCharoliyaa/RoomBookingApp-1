@@ -1,5 +1,1 @@
-<<<<<<< HEAD
 {"flutter":{"platforms":{"android":{"default":{"projectId":"roombooking-9577c","appId":"1:1053319653484:android:b1d614ebc5937f1726d049","fileOutput":"android/app/google-services.json"}},"dart":{"lib/firebase_options.dart":{"projectId":"roombooking-9577c","configurations":{"android":"1:1053319653484:android:b1d614ebc5937f1726d049","ios":"1:1053319653484:ios:8ed767432ede747b26d049","macos":"1:1053319653484:ios:8ed767432ede747b26d049","web":"1:1053319653484:web:4a297599d69729ba26d049","windows":"1:1053319653484:web:7f38d51398e92b0426d049"}}}}}}
-=======
-{"flutter":{"platforms":{"android":{"default":{"projectId":"roombooking-5c11f","appId":"1:370287773245:android:17248c39eae8efe6a6cc54","fileOutput":"android/app/google-services.json"}},"dart":{"lib/firebase_options.dart":{"projectId":"roombooking-5c11f","configurations":{"android":"1:370287773245:android:17248c39eae8efe6a6cc54","ios":"1:370287773245:ios:e3c49facfe5186a4a6cc54","macos":"1:370287773245:ios:e3c49facfe5186a4a6cc54","web":"1:370287773245:web:c9f6ed0a580f8a8fa6cc54","windows":"1:370287773245:web:768eefdecf33d877a6cc54"}}}}}}
->>>>>>> ffd80211788a35538289bfbf9511b483429bf94f

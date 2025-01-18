@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:roombooking/login.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -12,6 +11,71 @@ class Signup extends StatefulWidget {
 }
 
 class _SignupState extends State<Signup> {
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+
+  final TextEditingController _fullNameController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+
+  // bool _isLoading = false;
+
+  void _signupUser() async {
+    String fullName = _fullNameController.text.trim();
+    String email = _emailController.text.trim();
+    String password = _passwordController.text.trim();
+
+    if (fullName.isEmpty || email.isEmpty || password.isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text("All fields are required!")),
+      );
+      return;
+    }
+
+    // setState(() {
+    //   _isLoading = true;
+    // });
+
+    try {
+      // Create user in Firebase Authentication
+      UserCredential userCredential =
+          await _auth.createUserWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
+
+      User? user = userCredential.user;
+
+      if (user != null) {
+        // Save user details dynamically in Firestore
+        await _firestore.collection("users").doc(user.uid).set({
+          "fullName": fullName,
+          "email": email,
+          "userId": user.uid,
+          "createdAt": FieldValue.serverTimestamp(),
+        });
+
+        // ScaffoldMessenger.of(context).showSnackBar(
+        //   SnackBar(content: Text("Signup successful!")),
+        // );
+
+        // Navigate to another screen after signup (optional)
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => Login()),
+        );
+      }
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text("Error: ${e.toString()}")),
+      );
+    } finally {
+      // setState(() {
+      //   _isLoading = false;
+      // });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -107,14 +171,15 @@ class _SignupState extends State<Signup> {
 
                   // Login Button
                   ElevatedButton(
-                    onPressed: () {
-                      // Handle login action
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => Login(),
-                          ));
-                    },
+                    onPressed: _signupUser,
+                    // onPressed: () {
+                    //   // Handle login action
+                    //   Navigator.push(
+                    //       context,
+                    //       MaterialPageRoute(
+                    //         builder: (context) => Login(),
+                    //       ));
+                    // },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.orange,
                       minimumSize: const Size(double.infinity, 50),
